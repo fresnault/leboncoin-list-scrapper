@@ -1,0 +1,14 @@
+version: '2'
+services:
+    leboncoinlistscrapper-app:
+        image: leboncoinlistscrapper
+        environment:
+            # - _JAVA_OPTIONS=-Xmx512m -Xms256m
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_DATA_MONGODB_URI=mongodb://leboncoinlistscrapper-mongodb:27017
+            - SPRING_DATA_MONGODB_DATABASE=leboncoinListScrapper
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+    leboncoinlistscrapper-mongodb:
+        extends:
+            file: mongodb.yml
+            service: leboncoinlistscrapper-mongodb

@@ -1,0 +1,32 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "fr.fresnault"
+    },
+    "jhipsterVersion": "5.3.1",
+    "applicationType": "microservice",
+    "baseName": "leboncoinListScrapper",
+    "packageName": "fr.fresnault",
+    "packageFolder": "fr/fresnault",
+    "serverPort": "8081",
+    "authenticationType": "jwt",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": false,
+    "websocket": false,
+    "databaseType": "mongodb",
+    "devDatabaseType": "mongodb",
+    "prodDatabaseType": "mongodb",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "M2U5ZmYxNTg2MjQwNjhlZDU1NTIxZWE0M2FkZDhmN2IzMDA2ZmY2ODkxMmJiNDkyNzM2MjBmNzQ4ZTgxM2I4MWYzOTgxZTBhNzNjYjJlYWFlOTQ5NWEzYzBkODFjMjVmNmJlNjZjZGVhMTlhYmUzMTJmNTY2MGMyMWY4ZjZlMjg=",
+    "enableTranslation": false,
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "clientPackageManager": "npm",
+    "skipClient": true,
+    "skipUserManagement": true
+  }
+}
