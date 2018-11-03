@@ -1,0 +1,15 @@
+{
+    "name": "Property",
+    "fields": [],
+    "relationships": [],
+    "changelogDate": "20181102094318",
+    "entityTableName": "property",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "leboncoinListScrapper",
+    "applications": "*",
+    "microserviceName": "leboncoinListScrapper"
+}
