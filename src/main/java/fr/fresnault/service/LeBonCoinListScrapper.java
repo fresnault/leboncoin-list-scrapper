@@ -70,19 +70,16 @@ public class LeBonCoinListScrapper {
 					log.info("{} liens dans {}", propertiesLink.size(), currentPageLink);
 
 					// On envoie l'ensemble des liens dans RabbitMQ
-					for (String link : propertiesLink) {
-						int beginIndex = link.lastIndexOf('/');
-						int endIndex = link.lastIndexOf('.');
-						String refId = link.substring(beginIndex + 1, endIndex);
-						if (propertyRepository.findById(refId).isPresent()) {
-							log.info("La référence {} existe déjà dans la base", refId);
+					for (String url : propertiesLink) {
+						if (propertyRepository.findById(url).isPresent()) {
+							log.info("La référence {} existe déjà dans la base", url);
 							deque.push(true);
 						} else {
-							log.info("La référence {} n'existe pas dans la base", refId);
+							log.info("La référence {} n'existe pas dans la base", url);
 							deque.push(false);
-							propertyRepository.save(new Property(refId));
+							propertyRepository.save(new Property(url));
 							rabbitTemplate.convertAndSend(ConfigurationRabbitMQ.EXCHANGE_NAME,
-									ConfigurationRabbitMQ.QUEUE_NAME, refId);
+									ConfigurationRabbitMQ.QUEUE_NAME, url);
 						}
 					}
 				} catch (Exception e) {
