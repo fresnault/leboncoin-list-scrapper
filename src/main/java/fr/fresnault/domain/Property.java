@@ -1,10 +1,12 @@
 package fr.fresnault.domain;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Field;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+
 import java.io.Serializable;
 import java.util.Objects;
-
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
  * A Property.
@@ -12,53 +14,45 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "property")
 public class Property implements Serializable {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	@Id
-	private String id;
+    @Id
+    private String id;
 
-	public Property() {
-		// default constructor
-	}
+    // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
+    public String getId() {
+        return id;
+    }
 
-	public Property(String id) {
-		this.id = id;
-	}
+    public void setId(String id) {
+        this.id = id;
+    }
+    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
-	// jhipster-needle-entity-add-field - JHipster will add fields here, do not
-	// remove
-	public String getId() {
-		return id;
-	}
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Property property = (Property) o;
+        if (property.getId() == null || getId() == null) {
+            return false;
+        }
+        return Objects.equals(getId(), property.getId());
+    }
 
-	public void setId(String id) {
-		this.id = id;
-	}
-	// jhipster-needle-entity-add-getters-setters - JHipster will add getters
-	// and setters here, do not remove
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(getId());
+    }
 
-	@Override
-	public boolean equals(Object o) {
-		if (this == o) {
-			return true;
-		}
-		if (o == null || getClass() != o.getClass()) {
-			return false;
-		}
-		Property property = (Property) o;
-		if (property.getId() == null || getId() == null) {
-			return false;
-		}
-		return Objects.equals(getId(), property.getId());
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hashCode(getId());
-	}
-
-	@Override
-	public String toString() {
-		return "Property{" + "id=" + getId() + "}";
-	}
+    @Override
+    public String toString() {
+        return "Property{" +
+            "id=" + getId() +
+            "}";
+    }
 }
