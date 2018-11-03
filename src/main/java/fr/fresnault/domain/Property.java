@@ -1,12 +1,10 @@
 package fr.fresnault.domain;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Field;
-import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.DBRef;
-
 import java.io.Serializable;
 import java.util.Objects;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
  * A Property.
@@ -14,45 +12,54 @@ import java.util.Objects;
 @Document(collection = "property")
 public class Property implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    @Id
-    private String id;
+	@Id
+	private String id;
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
-    public String getId() {
-        return id;
-    }
+	public Property() {
+		super();
+	}
 
-    public void setId(String id) {
-        this.id = id;
-    }
-    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
+	public Property(String id) {
+		super();
+		this.id = id;
+	}
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Property property = (Property) o;
-        if (property.getId() == null || getId() == null) {
-            return false;
-        }
-        return Objects.equals(getId(), property.getId());
-    }
+	// jhipster-needle-entity-add-field - JHipster will add fields here, do not
+	// remove
+	public String getId() {
+		return id;
+	}
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(getId());
-    }
+	public void setId(String id) {
+		this.id = id;
+	}
+	// jhipster-needle-entity-add-getters-setters - JHipster will add getters
+	// and setters here, do not remove
 
-    @Override
-    public String toString() {
-        return "Property{" +
-            "id=" + getId() +
-            "}";
-    }
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		Property property = (Property) o;
+		if (property.getId() == null || getId() == null) {
+			return false;
+		}
+		return Objects.equals(getId(), property.getId());
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hashCode(getId());
+	}
+
+	@Override
+	public String toString() {
+		return "Property{" + "id=" + getId() + "}";
+	}
 }
