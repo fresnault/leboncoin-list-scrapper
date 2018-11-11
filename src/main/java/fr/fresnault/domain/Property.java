@@ -3,8 +3,13 @@ package fr.fresnault.domain;
 import java.io.Serializable;
 import java.util.Objects;
 
+import javax.validation.constraints.NotNull;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
+
+import fr.fresnault.domain.enumeration.Source;
 
 /**
  * A Property.
@@ -17,14 +22,17 @@ public class Property implements Serializable {
 	@Id
 	private String id;
 
-	public Property() {
-		super();
-	}
+	@NotNull
+	@Field("ref_source")
+	private Source refSource;
 
-	public Property(String id) {
-		super();
-		this.id = id;
-	}
+	@NotNull
+	@Field("ref_id")
+	private String refId;
+
+	@NotNull
+	@Field("url")
+	private String url;
 
 	// jhipster-needle-entity-add-field - JHipster will add fields here, do not
 	// remove
@@ -35,6 +43,46 @@ public class Property implements Serializable {
 	public void setId(String id) {
 		this.id = id;
 	}
+
+	public Source getRefSource() {
+		return refSource;
+	}
+
+	public Property refSource(Source refSource) {
+		this.refSource = refSource;
+		return this;
+	}
+
+	public void setRefSource(Source refSource) {
+		this.refSource = refSource;
+	}
+
+	public String getRefId() {
+		return refId;
+	}
+
+	public Property refId(String refId) {
+		this.refId = refId;
+		return this;
+	}
+
+	public void setRefId(String refId) {
+		this.refId = refId;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public Property url(String url) {
+		this.url = url;
+		return this;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
 	// jhipster-needle-entity-add-getters-setters - JHipster will add getters
 	// and setters here, do not remove
 
@@ -58,8 +106,4 @@ public class Property implements Serializable {
 		return Objects.hashCode(getId());
 	}
 
-	@Override
-	public String toString() {
-		return "Property{" + "id=" + getId() + "}";
-	}
 }
